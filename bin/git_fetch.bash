@@ -1,3 +1,6 @@
+# crontab -e
+#  0 *  *   *   *     for d in /home/fabien/projets/*/git/* ; do echo $d;  if [ $(git -C $d symbolic-ref --short HEAD | grep prj) ] ; then git -C $d pull --ff-only ; else git -C $d fetch ; fi  ; done
+
 for d in /home/fabien/projets/*/git/*
 do 
   GIT=git -C $d
