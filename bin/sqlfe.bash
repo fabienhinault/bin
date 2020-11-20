@@ -1,4 +1,3 @@
-cat ~/bin/sqlf.bash
 #!/bin/bash
 
 if [ ! -e $1 ]
