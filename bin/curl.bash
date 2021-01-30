@@ -8,8 +8,9 @@ HOST=$5
 URL_PATH=$6
 DATA_PATH=$7
 VERB=$8
+CLIENT_ID=$9
 
-TOKEN=$(curl -d 'client_id=web-devis' -d "username=$USER" -d "password=$PASS" -d 'grant_type=password' "${AUTH_HOST}/realms/$REALM/protocol/openid-connect/token" | jq '.access_token' | tr -d '"')
+TOKEN=$(curl -d "client_id=${CLIENT_ID}" -d "username=$USER" -d "password=$PASS" -d 'grant_type=password' "${AUTH_HOST}/realms/$REALM/protocol/openid-connect/token" | jq '.access_token' | tr -d '"')
 
 echo $TOKEN
 
