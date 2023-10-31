@@ -21,8 +21,9 @@ then
 fi
 
 
-TOKEN=$(curl -d 'client_id=client' -d "username=$USER" -d "password=$PASS" -d 'grant_type=password' "${AUTH_HOST}/realms/$REALM/protocol/openid-connect/token" | jq '.access_token' | tr -d '"')
+TOKEN=$(curl --insecure -d 'client_id=fg-topologyapi' -d "username=$USER" -d "password=$PASS" -d "client_secret=$SECRET" \
+    -d 'grant_type=password' "${AUTH_URL}" | jq '.access_token' | tr -d '"')
 
-CSRF=$(curl -v -H  "accept: */*" "${HOST}/csrf" | jq ".token" | tr -d '"')
+# CSRF=$(curl -v -H  "accept: */*" "${HOST}/csrf" | jq ".token" | tr -d '"')
 
 curl -v -X "${VERB}" -H "Authorization: Bearer ${TOKEN}" -H "X-XSRF-TOKEN: $CSRF" -H "Origin:$HOST" -H  "accept: */*" -H  "Content-Type: application/json" "${HOST}/${URL_PATH}" 
