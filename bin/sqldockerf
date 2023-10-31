@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ ! -f "$1" ]
+then
+    echo "ERROR: $1 is not a file" 
+    exit 1;
+fi
+sed "s/{}/$2/" "$1" > /tmp/sql.sql
+CONTAINER=$(docker container ls --format '{{.Names}}' --filter name=<service_name>)
+if [ -z "$CONTAINER" ]
+then
+    echo No container found. Maybe wrong node...
+    exit 1;
+fi
+docker cp /tmp/sql.sql "$CONTAINER":/tmp/sql.sql
+docker exec --user root "$CONTAINER" psql -U <user> -d <database> -f /tmp/sql.sql
