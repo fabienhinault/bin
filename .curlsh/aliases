@@ -1,0 +1,5 @@
+alias get=". $CURLSH_DIR/bin/get.bash"
+alias host=". $CURLSH_DIR/bin/host.bash"
+alias path=". $CURLSH_DIR/bin/path.bash"
+alias user=". $CURLSH_DIR/bin/user.bash"
+
