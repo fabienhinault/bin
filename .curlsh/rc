@@ -1,0 +1,30 @@
+#!/bin/bash
+
+set ueo -pipefail
+
+export CURLSH_DIR=$HOME/.curlsh
+HISTFILE=$CURLSH_DIR/history
+HISTFILESIZE=
+export PATH=$CURLSH_DIR/bin:$PATH
+
+. $CURLSH_DIR/aliases
+
+export PROTOCOL=https
+. $CURLSH_DIR/bin/host.bash api.host.com
+#PORT
+. $CURLSH_DIR/bin/path.bash your/favorite/path
+export CURLSH_DISPLAY=cat
+export CURLSH_AUTH_METHOD=openid-connect
+export AUTH_USER=user
+export AUTH_CLIENTID=<client id>
+unset CURLSH_AUTH_NEED_SECRET
+
+export CURLSH_OPTION_CONTENT_TYPE=('-H' "Content-Type: application/json")
+export CURLSH_OPTION_ACCEPT='-H  "accept: */*"'
+export CURLSH_HEADER_CONTENT_TYPE="Content-Type: application/json"
+export CURLSH_HEADER_ACCEPT="accept: */*"
+export CURLSH_HEADER_USER_AGENT="User-Agent: curl used by FH (fabien.hinault@free.fr)"
+export CURLSH_OPTION_VERBOSE=-v
+PS1="$PROTOCOL://${AUTH_USER+$AUTH_USER@}$HOST/$CURLSH_PATH > "
+
+CURLSH_ENV=true
