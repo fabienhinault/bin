@@ -23,7 +23,7 @@ export CURLSH_OPTION_CONTENT_TYPE=('-H' "Content-Type: application/json")
 export CURLSH_OPTION_ACCEPT='-H  "accept: */*"'
 export CURLSH_HEADER_CONTENT_TYPE="Content-Type: application/json"
 export CURLSH_HEADER_ACCEPT="accept: */*"
-export CURLSH_HEADER_USER_AGENT="User-Agent: curl used by FH (fabien.hinault@free.fr)"
+export CURLSH_HEADER_USER_AGENT="User-Agent: curl"
 export CURLSH_OPTION_VERBOSE=-v
 PS1="$PROTOCOL://${AUTH_USER+$AUTH_USER@}$HOST/$CURLSH_PATH > "
 
