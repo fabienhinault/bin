@@ -3,6 +3,6 @@
 HOST_NO_PREFIX=${HOST#auth.}
 HOST_NO_PREFIX=${HOST_NO_PREFIX#api.}
 echo $HOST_NO_PREFIX
-export AUTH_URL="https://auth.$HOST_NO_PREFIX/auth/realms/Fiber/protocol/openid-connect/token"
+export AUTH_URL="https://auth.$HOST_NO_PREFIX/auth/realms/<realm>/protocol/openid-connect/token"
 export CURLSH_AUTH_PASS_SSH_KEY=$HOME/.ssh/Exfo_Rennes/Exfo_Rennes.pem
 export CURLSH_AUTH_PASS_SSH_HOST=host1.${HOST#auth.}
